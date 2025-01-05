@@ -1,0 +1,240 @@
+:root {
+  --color-white: #f9f9f9;
+  --color-black: black;
+  --color-gray_light: rgb(240, 240, 240);
+  --color-gray: rgb(202, 202, 202);
+  --color-dark_gray: rgb(75, 75, 75);
+  --color-darker_gray: rgb(36, 36, 36);
+  --color-accent: red;
+  --border-radius: 4px;
+  --section-border: 1px solid rgba(0 0 0 / 0.5);
+  --form-border: 1px solid rgba(0 0 0 / 0.3);
+}
+*:focus,
+*:focus-visible {
+  outline-color: var(--color-accent);
+}
+@font-face {
+  font-family: Roboto;
+  src: url(RobotoMono-VariableFont_wght.ttf);
+}
+body {
+  font-family: "Roboto";
+  background-color: var(--color-white);
+  font-size: 1em;
+  accent-color: var(--color-accent);
+}
+hgroup {
+  box-shadow: -5px 0 0 -1px var(--color-black);
+  padding-left: 1rem;
+}
+a:not([class]) {
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  border-bottom: 1px dashed;
+  position: relative;
+  padding: 0 0.25rem;
+}
+a:not([class]):after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background: white;
+  mix-blend-mode: difference;
+  transition: height 0.15s;
+}
+a:not([class]):focus:after,
+a:not([class]):hover:after {
+  height: 100%;
+}
+
+a:not([class]):active:after {
+  background: var(--color-dark_gray);
+}
+hgroup p {
+  font-weight: 500;
+  font-style: italic;
+}
+main {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem;
+}
+main section {
+  border: var(--section-border);
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  margin-block-end: 1rem;
+  margin-block-start: 1rem;
+}
+:has(h1, h2, h3, h4, p, figure, blockquote, dl, dd) {
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  figure,
+  blockquote,
+  dl,
+  dd {
+    &:nth-child(1) {
+      margin-block-start: 0;
+    }
+  }
+}
+hr {
+  margin: 1rem 0;
+}
+code {
+  background: rgb(54, 54, 54);
+  padding: 0.15rem;
+  border-radius: var(--border-radius);
+  color: white;
+  border: 1px solid var(--color-gray_light);
+}
+div:has(table) {
+  max-width: 100%;
+  overflow: auto;
+}
+table {
+  margin-block-start: 1rem;
+  border-radius: var(--border-radius);
+  border: var(--form-border);
+  border-spacing: 0;
+  overflow: hidden;
+}
+td,
+th {
+  padding: 1rem;
+}
+tbody td,
+th {
+  border-bottom: var(--form-border);
+}
+tr:nth-child(even),
+th {
+  background-color: var(--color-gray_light);
+}
+td:not(:nth-last-child(1)),
+th:not(:nth-last-child(1)) {
+  border-right: var(--form-border);
+}
+tfoot tr td:nth-child(1) {
+  border-top: var(--section-border);
+}
+aside {
+  background-color: var(--color-gray);
+  display: inline-block;
+  padding: 1rem;
+  border-left: 5px solid var(--color-dark_gray);
+  margin-block-start: 1rem;
+  border-radius: var(--border-radius);
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border: var(--form-border);
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  margin-block-start: 1rem;
+}
+fieldset {
+  border: var(--form-border);
+  border-radius: var(--border-radius);
+}
+input,
+input + label {
+  cursor: pointer;
+}
+input[type="text"],
+input[type="search"] {
+  border-radius: var(--border-radius);
+  padding: 0.5rem;
+  border: var(--section-border);
+  width: fit-content;
+  cursor: text;
+}
+input[type="range"] {
+  display: block;
+  cursor: ew-resize;
+}
+input[type="color"] {
+  inline-size: 40px;
+  block-size: 40px;
+  background-color: white;
+}
+button:not([popovertarget]) {
+  padding: 0.5rem 1rem;
+  border: var(--section-border);
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-radius: var(--border-radius);
+  width: fit-content;
+  cursor: pointer;
+}
+button:not([popovertarget]):hover {
+  background-color: var(--color-dark_gray);
+}
+button:not([popovertarget]):active {
+  background: var(--color-darker_gray);
+  scale: 0.95;
+}
+details {
+  border: var(--form-border);
+  border-radius: var(--border-radius);
+  margin-block-start: 1rem;
+}
+details div {
+  padding: 1rem;
+  border-top: var(--form-border);
+}
+summary {
+  padding: 1rem;
+  cursor: pointer;
+  font-weight: 500;
+}
+details:not([open]) summary:focus,
+details:not([open]) summary:focus-visible,
+details:not([open]) summary:hover {
+  background-color: var(--color-gray);
+}
+details[open] summary {
+  background-color: var(--color-dark_gray);
+  color: var(--color-white);
+}
+details[open] summary:hover {
+  background-color: var(--color-gray);
+  color: var(--color-black);
+}
+abbr {
+  font-style: italic;
+  border-bottom: 1px dotted;
+}
+textarea {
+  resize: none;
+  padding: 0.75rem;
+}
+div:has(> blockquote) {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  padding: 0.75rem;
+}
+div:has(> blockquote) > p {
+  text-align: right;
+  margin-inline-start: 20px;
+  margin-inline-end: 20px;
+}
+blockquote {
+  margin-inline-start: 20px;
+}
+blockquote p::before {
+  content: "\201C";
+}
+blockquote p::after {
+  content: "\201D";
+}
