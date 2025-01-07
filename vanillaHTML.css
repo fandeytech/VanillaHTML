@@ -11,10 +11,7 @@
   --form-border: 1px solid rgba(0 0 0 / 0.3);
 }
 
-@layer vanillaHTML, customStyles;
-
-@layer customStyles {
-}
+@layer vanillaHTML;
 
 @layer vanillaHTML {
   *:focus,
