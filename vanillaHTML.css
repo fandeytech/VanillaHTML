@@ -10,7 +10,11 @@
   --section-border: 1px solid rgba(0 0 0 / 0.5);
   --form-border: 1px solid rgba(0 0 0 / 0.3);
 }
+
 @layer vanillaHTML, customStyles;
+
+@layer customStyles {
+}
 
 @layer vanillaHTML {
   *:focus,
@@ -130,6 +134,7 @@
     border-top: var(--section-border);
   }
   aside {
+    color: black;
     background-color: var(--color-gray);
     display: inline-block;
     padding: 1rem;
@@ -241,7 +246,4 @@
   blockquote p::after {
     content: "\201D";
   }
-}
-
-@layer customStyles {
 }
