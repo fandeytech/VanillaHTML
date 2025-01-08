@@ -10,6 +10,28 @@
   --section-border: 1px solid rgba(0 0 0 / 0.5);
   --form-border: 1px solid rgba(0 0 0 / 0.3);
 }
+@media (prefers-color-scheme: dark) {
+  body {
+    --color-white: black;
+    --color-black: #f9f9f9;
+    --section-border: 1px solid rgba(230 230 230 / 0.5);
+    --form-border: 1px solid rgba(230 230 230 / 0.3);
+
+    --color-gray: rgb(228, 228, 228);
+    --color-gray_light: rgb(24, 24, 24);
+    --color-dark_gray: rgb(180, 180, 180);
+    --color-darker_gray: rgb(136, 136, 136);
+  }
+  details:not([open]) summary:focus,
+  details:not([open]) summary:focus-visible,
+  details:not([open]) summary:hover {
+    background-color: var(--color-gray);
+    color: var(--color-white);
+  }
+  details[open] summary {
+    color: var(--color-white);
+  }
+}
 
 @layer vanillaHTML;
 
@@ -25,6 +47,7 @@
   body {
     font-family: "Roboto";
     background-color: var(--color-white);
+    color: var(--color-black);
     font-size: 1em;
     accent-color: var(--color-accent);
   }
@@ -199,14 +222,17 @@
     border-top: var(--form-border);
   }
   summary {
+    color: var(--color-black);
     padding: 1rem;
     cursor: pointer;
     font-weight: 500;
   }
+
   details:not([open]) summary:focus,
   details:not([open]) summary:focus-visible,
   details:not([open]) summary:hover {
     background-color: var(--color-gray);
+    color: var(--color-black);
   }
   details[open] summary {
     background-color: var(--color-dark_gray);
