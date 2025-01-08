@@ -281,11 +281,37 @@
           <label for="color">Favorite Color</label>
           <input type="color" />
 
+          <fieldset>
+            <legend>CSS Only Form Validation</legend>
+            <div>
+              <label for="email">Email<sup>*</sup></label>
+              <br />
+              <input
+                required
+                type="email"
+                name="email"
+                placeholder="me@example.com"
+                pattern=".+@*\.com"
+              />
+            </div>
+            <div>
+              <label for="password">Password<sup>*</sup></label>
+              <br />
+              <input
+                required
+                minlength="12"
+                type="password"
+                name="password"
+                placeholder="Minimum 12 Characters"
+              />
+            </div>
+          </fieldset>
+
           <span
             >Press <strong>Submit</strong> to see an example
             <code><span><</span>button<span>></span></code> press.</span
           >
-          <button>Submit</button>
+          <button type="submit">Submit</button>
         </form>
       </section>
       <section>

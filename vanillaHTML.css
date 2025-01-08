@@ -39,6 +39,8 @@
   *:focus,
   *:focus-visible {
     outline-color: var(--color-accent);
+    outline-style: solid;
+    outline-width: 3px;
   }
   @font-face {
     font-family: Roboto;
@@ -179,6 +181,8 @@
   input + label {
     cursor: pointer;
   }
+  input[type="email"],
+  input[type="password"],
   input[type="text"],
   input[type="search"] {
     border-radius: var(--border-radius);
@@ -187,6 +191,23 @@
     width: fit-content;
     cursor: text;
   }
+  form:has(input[type="email"])
+    input[type="email"]:not(:placeholder-shown):valid,
+  form:has(input[type="password"])
+    input[type="password"]:not(:placeholder-shown):valid {
+    outline-color: green;
+  }
+  form:has(input[type="email"])
+    input[type="email"]:not(:placeholder-shown):invalid,
+  form:has(input[type="password"])
+    input[type="password"]:not(:placeholder-shown):invalid {
+    outline-color: orange;
+  }
+  form:has(input[type="email"]) input[type="password"]:focus:invalid,
+  form:has(input[type="password"]) input[type="password"]:focus:invalid {
+    border-color: red;
+  }
+
   input[type="range"] {
     display: block;
     cursor: ew-resize;
