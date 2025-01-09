@@ -1,3 +1,7 @@
+/**
+  Variables for simple theming.
+  Simple dark mode included
+**/
 :root {
   --color-white: #f9f9f9;
   --color-black: black;
@@ -10,7 +14,10 @@
   --section-border: 1px solid rgba(0 0 0 / 0.5);
   --form-border: 1px solid rgba(0 0 0 / 0.3);
 }
-@media (prefers-color-scheme: dark) {
+/*
+  Change variable colors for dark mode
+*/
+/* @media (prefers-color-scheme: dark) {
   body {
     --color-white: black;
     --color-black: #f9f9f9;
@@ -22,30 +29,41 @@
     --color-dark_gray: rgb(180, 180, 180);
     --color-darker_gray: rgb(136, 136, 136);
   }
+
   details:not([open]) summary:focus,
   details:not([open]) summary:focus-visible,
   details:not([open]) summary:hover {
     background-color: var(--color-gray);
     color: var(--color-white);
   }
+
   details[open] summary {
     color: var(--color-white);
   }
-}
-
+} */
+/*
+  Layers make it easy to overwrite this CSS
+*/
 @layer vanillaHTML;
 
 @layer vanillaHTML {
+  /*
+    Focus states for accessibility
+  */
   *:focus,
   *:focus-visible {
     outline-color: var(--color-accent);
     outline-style: solid;
     outline-width: 3px;
   }
+  /*
+    Declare custom font
+  */
   @font-face {
     font-family: Roboto;
     src: url(RobotoMono-VariableFont_wght.ttf);
   }
+
   body {
     font-family: "Roboto";
     background-color: var(--color-white);
@@ -57,6 +75,7 @@
     box-shadow: -5px 0 0 -1px var(--color-black);
     padding-left: 1rem;
   }
+  /* Style anchors without a classname */
   a:not([class]) {
     text-decoration: none;
     display: inline-block;
@@ -88,11 +107,15 @@
     font-weight: 500;
     font-style: italic;
   }
+
+  /* Responsive main container*/
   main {
     max-width: 1200px;
     margin: auto;
     padding: 2rem;
   }
+
+  /* All sections in main */
   main section {
     border: var(--section-border);
     border-radius: var(--border-radius);
@@ -100,6 +123,10 @@
     margin-block-end: 1rem;
     margin-block-start: 1rem;
   }
+  /* The reset file adds margin to the top of these elements. 
+    This can cause weird spacing when they are the first element in a container.
+    This checks if a container has one of these elements as the first child, if so, we remove that margin.
+  */
   :has(h1, h2, h3, h4, p, figure, blockquote, dl, dd) {
     h1,
     h2,
@@ -181,6 +208,7 @@
   input + label {
     cursor: pointer;
   }
+  /*Text based inputs*/
   input[type="email"],
   input[type="password"],
   input[type="text"],
@@ -191,6 +219,7 @@
     width: fit-content;
     cursor: text;
   }
+  /* Email and Password CSS only form validation*/
   form:has(input[type="email"])
     input[type="email"]:not(:placeholder-shown):valid,
   form:has(input[type="password"])
@@ -207,7 +236,7 @@
   form:has(input[type="password"]) input[type="password"]:focus:invalid {
     border-color: red;
   }
-
+  /* Non-text inputs*/
   input[type="range"] {
     display: block;
     cursor: ew-resize;
@@ -217,6 +246,7 @@
     block-size: 40px;
     background-color: white;
   }
+  /*Buttons without a popover are styled.*/
   button:not([popovertarget]) {
     padding: 0.5rem 1rem;
     border: var(--section-border);
@@ -290,4 +320,19 @@
   blockquote p::after {
     content: "\201D";
   }
+}
+/*Description Details*/
+dt {
+  font-size: 1.125rem;
+  font-weight: 600;
+  border-bottom: 1px solid;
+  width: fit-content;
+}
+dd {
+  margin-block-start: 0.5rem;
+  margin-block-end: 0.75rem;
+}
+dd:before {
+  content: "\25B6";
+  font-size: 0.75rem;
 }
