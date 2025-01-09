@@ -17,7 +17,7 @@
 /*
   Change variable colors for dark mode
 */
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
   body {
     --color-white: black;
     --color-black: #f9f9f9;
@@ -40,7 +40,7 @@
   details[open] summary {
     color: var(--color-white);
   }
-} */
+}
 /*
   Layers make it easy to overwrite this CSS
 */
