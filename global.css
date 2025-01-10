@@ -1,8 +1,13 @@
 .shade-section .shade-wrapper {
+  --columns: 6;
   display: grid;
-  row-gap: 1rem;
-  column-gap: 0.5rem;
-  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem 0.5rem;
+  grid-template-columns: repeat(var(--columns), 1fr);
+}
+@media (max-width: 800px) {
+  .shade-section .shade-wrapper {
+    --columns: 3;
+  }
 }
 .shade-wrapper figure {
   flex: 1;
@@ -16,6 +21,9 @@
 /* Classes using the variables */
 .shade-0 {
   background-color: var(--shade-0);
+}
+.shade-5 {
+  background-color: var(--shade-5);
 }
 .shade-25 {
   background-color: var(--shade-25);
