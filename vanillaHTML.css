@@ -183,6 +183,7 @@
     border: var(--form-border);
     border-spacing: 0;
     overflow: hidden;
+    width: 100%;
   }
 
   td,
