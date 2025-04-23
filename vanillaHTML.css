@@ -25,11 +25,11 @@
   --color-accent: hotpink;
 
   /* Semantic Colors - Light Mode Defaults */
-  --background: var(--shade-255);
+  --background: #f5f5f5;
   --text: var(--shade-0);
   --surface-light: var(--shade-225);
   --surface-medium: var(--shade-175);
-  --surface-dark: var(--shade-75);
+  --surface-dark: var(--shade-50);
   --border: var(--shade-50);
   --surface-hover: var(--shade-175);
   --surface-active: var(--shade-25);
@@ -47,11 +47,11 @@
 @media (prefers-color-scheme: dark) {
   :root {
     /* Semantic Colors - Dark Mode Values */
-    --background: var(--shade-5);
+    --background: #232323;
     --text: var(--shade-255);
     --surface-light: var(--shade-50);
     --surface-medium: var(--shade-100);
-    --surface-dark: var(--shade-175);
+    --surface-dark: var(--shade-225);
     --border: var(--shade-200);
     --surface-hover: var(--shade-100);
     --surface-active: var(--shade-225);
@@ -73,33 +73,50 @@
   }
 
   @font-face {
-    font-family: Roboto-Mono;
-    src: url(RobotoMono-VariableFont_wght.ttf);
+    font-family: Inter-Italic;
+    src: url("/Inter-VariableFont_opsz\,wght.ttf");
   }
   @font-face {
-    font-family: Roboto-Regular;
-    src: url(Roboto-Regular.ttf);
+    font-family: Inter-Regular;
+    src: url("/Inter-VariableFont_opsz\,wght.ttf");
   }
   body {
-    font-family: "Roboto-Regular";
+    font-family: "Inter-Regular";
     background-color: var(--background);
     color: var(--text);
     font-size: 1.05em;
     accent-color: var(--color-accent);
+    font-optical-sizing: auto;
+    font-style: normal;
   }
-
-  hgroup {
-    box-shadow: -5px 0 0 -1px var(--text);
-    padding-left: 1rem;
+  body > header {
+    border-bottom: 1px solid;
+  }
+  body > header > nav {
+    max-width: 1200px;
+    margin: auto;
+    padding: 2rem;
+  }
+  body > header > nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+  body > header > nav > menu {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 0;
   }
 
   a:not([class]) {
-    text-decoration: none;
     display: inline-block;
-    cursor: pointer;
-    border-bottom: 1px dashed;
-    position: relative;
+    text-decoration: underline;
+    border: none;
     padding: 0 0.25rem;
+    position: relative;
   }
 
   a:not([class]):after {
@@ -123,25 +140,38 @@
     background: var(--surface-dark);
   }
 
-  hgroup p {
-    font-weight: 500;
-    font-style: italic;
-  }
-
   main {
     max-width: 1200px;
     margin: auto;
     padding: 2rem;
+    padding-top: 0;
   }
-
-  main section {
+  section {
     border: var(--section-border);
-    border-radius: var(--border-radius);
-    padding: 1rem;
-    margin-block-end: 1rem;
-    margin-block-start: 1rem;
+    display: grid;
+    gap: 1rem;
+    margin-block: 4rem;
   }
-
+  section:first-child {
+    margin-block-start: 2rem;
+  }
+  section > :last-child {
+    margin-block-end: 1rem;
+  }
+  section > header {
+    background: var(--surface-dark);
+    color: var(--text-inverse);
+    padding: 1rem;
+  }
+  section > header > hgroup {
+    box-shadow: none;
+  }
+  section > *:not(header) {
+    margin-inline: 1rem;
+  }
+  section > header > hgroup:has(small) > p {
+    margin-top: 0;
+  }
   :has(h1, h2, h3, h4, p, figure, blockquote, dl, dd) {
     h1,
     h2,
@@ -158,17 +188,12 @@
     }
   }
 
-  hr {
-    margin: 1rem 0;
-  }
-
   code {
     background: var(--border);
     padding: 0.15rem;
-    border-radius: var(--border-radius);
+
     color: var(--text-inverse);
     border: 1px solid var(--surface-light);
-    font-family: Roboto-Mono;
     font-size: 0.95rem;
   }
 
@@ -179,7 +204,7 @@
 
   table {
     margin-block-start: 1rem;
-    border-radius: var(--border-radius);
+
     border: var(--form-border);
     border-spacing: 0;
     overflow: hidden;
@@ -211,32 +236,35 @@
   }
 
   aside {
-    color: var(--text);
-    background-color: var(--surface-medium);
-    display: inline-block;
+    color: white;
+    background: var(--shade-75);
+    display: block;
     padding: 1rem;
-    border-left: 5px solid var(--surface-dark);
-    margin-block-start: 1rem;
-    border-radius: var(--border-radius);
+    border-left: 5px solid var(--surface-medium);
   }
-
+  aside[role="alert"] {
+    --light-danger: #ffc4c4;
+    border-color: var(--color-danger);
+    background: var(--light-danger);
+    color: black;
+  }
   form {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     border: var(--form-border);
     padding: 1rem;
-    border-radius: var(--border-radius);
+
     margin-block-start: 1rem;
   }
 
   fieldset {
     border: var(--form-border);
-    border-radius: var(--border-radius);
   }
 
   input,
-  input + label {
+  input + label,
+  label:has(input) {
     cursor: pointer;
   }
 
@@ -244,7 +272,6 @@
   input[type="password"],
   input[type="text"],
   input[type="search"] {
-    border-radius: var(--border-radius);
     padding: 0.5rem;
     border: var(--section-border);
     width: fit-content;
@@ -278,7 +305,6 @@
   input[type="color"] {
     inline-size: 40px;
     block-size: 40px;
-    background-color: var(--background);
   }
 
   button:not([popovertarget]) {
@@ -286,7 +312,7 @@
     border: var(--section-border);
     background-color: var(--text);
     color: var(--background);
-    border-radius: var(--border-radius);
+
     width: fit-content;
     cursor: pointer;
   }
@@ -302,8 +328,6 @@
 
   details {
     border: var(--form-border);
-    border-radius: var(--border-radius);
-    margin-block-start: 1rem;
   }
 
   details div {
@@ -385,4 +409,33 @@ dd {
 dd:before {
   content: "\25B6";
   font-size: 0.75rem;
+}
+
+footer {
+  background: var(--surface-dark);
+  color: var(--text-inverse);
+  min-height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+footer p {
+  margin: 0;
+}
+footer menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+footer > div {
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+footer > aside {
+  border: none;
+  padding: 0.5rem 1rem;
+  color: white;
+  background: var(--shade-100);
 }

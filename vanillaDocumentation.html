@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./vanillaHTML.css" />
+    <link rel="stylesheet" href="./reset.css" />
+    <link rel="stylesheet" href="./global.css" />
+    <title>VanillaHTML (A CSS File)</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div>
+          <span
+            style="
+              color: white;
+              padding: 0.25rem 1rem;
+              background: rebeccapurple;
+              display: inline-block;
+              font-size: 2.25rem;
+              font-weight: bold;
+              max-width: 100%;
+            "
+          >
+            VanillaHTML
+          </span>
+        </div>
+        <menu>
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./vanillaDocumentation.html">Documentation</a></li>
+          <li><a href="./vanillaChangeLog.html">Change Log</a></li>
+        </menu>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <header>
+          <hgroup>
+            <h1>Documentation</h1>
+            <p>
+              This guide will teach you how to use VanillaHTML to learn and
+              rapidly prototype your ideas.
+            </p>
+          </hgroup>
+        </header>
+        <div>
+          Using VanillaHTML allows you to structure and future proof your
+          website for all devices and browsers without worrying about the design
+          system behind it. You can focus on making your website functional
+          first.
+        </div>
+        <div>
+          <h2>Installation</h2>
+          <p>
+            Copy or download
+            <a
+              href="https://github.com/fandeytech/VanillaHTML/blob/main/global.css"
+              target="_blank"
+            >
+              the CSS file</a
+            >
+            from Github.
+          </p>
+          <h2>Review HTML Elements</h2>
+          <p>
+            If you aren't already familiar with the
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element"
+              target="blank"
+              >list of HTML elements</a
+            >
+            please review these elements before diving into using VanillaHTML.
+            We will walk through everything that is included in VanillaHTML, but
+            it will be easier if you have the HTML elements reference open so
+            you can get extra information as needed.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <header>
+          <hgroup>
+            <h2>HTML Tables</h2>
+            <p>A simple structure to easily see your table data</p>
+          </hgroup>
+        </header>
+
+        <div>
+          <table>
+            <caption>
+              Example Table
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">PROS</th>
+                <th scope="col">CONS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <ul>
+                    <li>Easier to see what you are doing as a beginner</li>
+                    <li>Makes use of Semantic HTML</li>
+                    <li>Responsive</li>
+                    <li>No class names for easy overwrites</li>
+                    <li>Default form inputs look good</li>
+                    <li>Tables come pre styled for rapid development</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul>
+                    <li>Opinionated styles</li>
+                    <li>Delay Learning <abbr>CSS</abbr></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span>Here's another row just to look at!</span>
+                </td>
+                <td>
+                  <span
+                    >The <abbr>CSS</abbr> contains some properties that do not
+                    have baseline support yet.</span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <center>
+                    <strong>Progressive Enhancement:</strong>
+                    Use an updated version of Chrome for the best experience.
+                  </center>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="2">
+                  <span><strong>And this is a table footer!</strong></span>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <header>
+          <hgroup>
+            <h2>Forms</h2>
+            <p>CSS only validation, basic styling, cursor updates.</p>
+          </hgroup>
+        </header>
+        <p>
+          Please read
+          <a href="https://developer.mozilla.org/en-US/docs/Glossary/Semantics"
+            >MDN Documentation on Semantics in HTML</a
+          >
+        </p>
+        <h3>This is an Example Form</h3>
+        <aside>
+          <strong>Note:</strong>
+          I've updated the <code>cursor</code> on various inputs to give better
+          feedback to users. I will be coming back to add more Form Elements and
+          inputs over time.
+        </aside>
+        <form onsubmit="return false;">
+          <div>
+            <label for="movie">Favorite Show?</label>
+            <br />
+            <input type="text" name="movie" placeholder="Bobs Burgers" />
+          </div>
+
+          <fieldset>
+            <legend>Choose your favorite monster</legend>
+
+            <input type="radio" id="kraken" name="monster" value="K" />
+            <label for="kraken">Kraken</label><br />
+
+            <input type="radio" id="sasquatch" name="monster" value="S" />
+            <label for="sasquatch">Sasquatch</label><br />
+
+            <input type="radio" id="mothman" name="monster" value="M" />
+            <label for="mothman">Mothman</label>
+          </fieldset>
+          <div>
+            <label for="rate">Don't forget a rating!</label>
+            <input
+              type="range"
+              name="rate"
+              min="0"
+              max="100"
+              step="2"
+              value="50"
+            />
+          </div>
+          <fieldset>
+            <legend>Do you agree?</legend>
+            <input type="checkbox" id="chbx-agree" name="agree" value="Yes!" />
+            <label for="chbx-agree">Agree</label>
+            <br />
+            <input
+              type="checkbox"
+              id="chbx-disagree"
+              name="disagree"
+              value="No!"
+            />
+            <label for="chbx-disagree">Disagree</label>
+          </fieldset>
+
+          <label for="childhood">Tell Me About Your Childhood:</label>
+          <textarea
+            spellcheck="true"
+            name="childhood"
+            placeholder="It was a dark and stormy night..."
+          ></textarea>
+
+          <label for="color">Favorite Color</label>
+          <input type="color" />
+
+          <fieldset>
+            <legend>CSS Only Form Validation</legend>
+            <div>
+              <label for="email">Email<sup>*</sup></label>
+              <br />
+              <input
+                required
+                type="email"
+                name="email"
+                placeholder="me@example.com"
+                pattern=".+@*\.com"
+              />
+            </div>
+            <div>
+              <label for="password">Password<sup>*</sup></label>
+              <br />
+              <input
+                required
+                minlength="12"
+                type="password"
+                name="password"
+                placeholder="Minimum 12 Characters"
+              />
+            </div>
+          </fieldset>
+
+          <span
+            >Press <strong>Submit</strong> to see an example
+            <code><span><</span>button<span>></span></code> press.</span
+          >
+          <button type="submit">Submit</button>
+        </form>
+      </section>
+      <section>
+        <header>
+          <hgroup>
+            <h2>Blockquote</h2>
+            <p></p>
+          </hgroup>
+        </header>
+        <div>
+          <blockquote cite="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+            <p>Never gonna make you cry, Never gonna say goodbye,</p>
+          </blockquote>
+          <p>
+            - Rick Astley,
+            <cite
+              ><a
+                target="_blank"
+                href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                >Never Gonna Give You Up</a
+              ></cite
+            >
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <header>
+          <hgroup>
+            <h2>Description Details</h2>
+            <p>Create definitions without defining styles</p>
+          </hgroup>
+        </header>
+        <div>
+          <dl>
+            <dt>Hello World</dt>
+            <dd>&nbsp; Goodnight Moon</dd>
+          </dl>
+        </div>
+      </section>
+      <section>
+        <header>
+          <hgroup>
+            <h2>Detail Summary</h2>
+            <p>Create definitions without defining styles</p>
+          </hgroup>
+        </header>
+        <div>
+          <details>
+            <summary>HTML and CSS Only...</summary>
+            <div>No JavaScript required.</div>
+          </details>
+        </div>
+      </section>
+      <section class="shade-section">
+        <header>
+          <hgroup>
+            <h2>Shades and Colors</h2>
+            <p>Simple <abbr>CSS</abbr> variable schema</p>
+          </hgroup>
+        </header>
+
+        <h3>Shades</h3>
+        <div class="shade-wrapper">
+          <figure>
+            <div class="color-box shade-0"></div>
+            <figcaptoion
+              >--shade-0 <br />
+              rgb(0, 0, 0)</figcaptoion
+            >
+          </figure>
+          <figure>
+            <div class="color-box shade-5"></div>
+            <figcaptoion
+              >--shade-5<br />
+              rgb(5, 5, 5)</figcaptoion
+            >
+          </figure>
+          <figure>
+            <div class="color-box shade-25"></div>
+            <figcaptoion
+              >--shade-25<br />
+              rgb(25, 25, 25)</figcaptoion
+            >
+          </figure>
+          <figure>
+            <div class="color-box shade-50"></div>
+            <figcaptoion
+              >--shade-50 <br />
+              rgb(50, 50, 50)</figcaptoion
+            >
+          </figure>
+          <figure>
+            <div class="color-box shade-75"></div>
+            <figcaptoion
+              >--shade-75 <br />
+              rgb(75, 75, 75)</figcaptoion
+            >
+          </figure>
+          <figure>
+            <div class="color-box shade-100"></div>
+            <figcaptoion
+              >--shade-100<br />
+              rgb(100, 100, 100)</figcaptoion
+            >
+          </figure>
+          <figure>
+            <div class="color-box shade-125"></div>
+            <figcaptoion
+              >--shade-125 <br />
+              rgb(125, 125, 125)</figcaptoion
+            >
+          </figure>
+
+          <figure>
+            <div class="color-box shade-150"></div>
+            <figcaptoion
+              >--shade-150<br />
+              rgb(150, 150, 150)</figcaptoion
+            >
+          </figure>
+          <figure>
+            <div class="color-box shade-175"></div>
+            <figcaptoion
+              >--shade-175 <br />
+              rgb(175, 175, 175)</figcaptoion
+            >
+          </figure>
+          <figure>
+            <div class="color-box shade-200"></div>
+            <figcaptoion
+              >--shade-200 <br />
+              rgb(200, 200, 200)</figcaptoion
+            >
+          </figure>
+          <figure>
+            <div class="color-box shade-225"></div>
+            <figcaptoion
+              >--shade-225<br />
+              rgb(225, 225, 225)</figcaptoion
+            >
+          </figure>
+          <figure>
+            <div class="color-box shade-250"></div>
+            <figcaptoion
+              >--shade-250 <br />
+              rgb(250, 250, 250)</figcaptoion
+            >
+          </figure>
+          <figure>
+            <div class="color-box shade-255"></div>
+            <figcaptoion
+              >--shade-255 <br />
+              rgb(255, 255, 255)</figcaptoion
+            >
+          </figure>
+        </div>
+
+        <h3>Colors</h3>
+        <div class="shade-wrapper">
+          <figure>
+            <div class="color-box color-danger"></div>
+            <figcaptoion
+              >--color-danger <br />
+              rgb(255, 0, 0)</figcaptoion
+            >
+          </figure>
+          <figure>
+            <div class="color-box color-caution"></div>
+            <figcaptoion
+              >--color-caution<br />
+              rgb(255, 165, 0)</figcaptoion
+            >
+          </figure>
+          <figure>
+            <div class="color-box color-success"></div>
+            <figcaptoion
+              >--color-success <br />
+              rgb(0, 128, 0)</figcaptoion
+            >
+          </figure>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div>
+        <div>
+          <strong> Menu </strong>
+          <menu>
+            <li><a href="./newVanilla.html">Home</a></li>
+            <li><a href="./vanillaDocumentation.html">Documentation</a></li>
+            <li><a href="./vanillaChangeLog.html">Change Log</a></li>
+          </menu>
+        </div>
+        <div>
+          <strong> About </strong>
+          <p>
+            VanillaHTML is a CSS file that is intended to help people learn
+            Semantic and Accessible HTML.
+          </p>
+        </div>
+      </div>
+      <aside>
+        <p>
+          Created by
+          <a href="https://bijanfandey.com" target="_blank">Bijan Fandey</a> |
+          <a href="https://fandeytech.com" target="_blank">Fandey Tech</a>
+        </p>
+      </aside>
+    </footer>
+  </body>
+</html>

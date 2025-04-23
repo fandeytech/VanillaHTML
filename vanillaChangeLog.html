@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Vanilla HTML 1.0.2 (A CSS File)</title>
+    <meta
+      name="description"
+      content="VanillaHTML is a CSS file that is intended to help people learn Semantic and Accessible HTML."
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="vanillahtml.css" />
+    <link rel="stylesheet" href="./reset.css" />
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <div>
+          <span
+            style="
+              color: white;
+              padding: 0.25rem 1rem;
+              background: rebeccapurple;
+              display: inline-block;
+              font-size: 2.25rem;
+              font-weight: bold;
+              max-width: 100%;
+            "
+          >
+            VanillaHTML
+          </span>
+        </div>
+        <menu>
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./vanillaDocumentation.html">Documentation</a></li>
+          <li><a href="./vanillaChangeLog.html">Change Log</a></li>
+        </menu>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <header>
+          <hgroup>
+            <h2>Change Log</h2>
+            <p>A list of changes made in 1.0.2</p>
+          </hgroup>
+        </header>
+        <div>
+          <ul>
+            <li>
+              Added universal header
+              <ul>
+                <li>Added multi-page support</li>
+              </ul>
+            </li>
+            <li>
+              Added universal footer
+              <ul>
+                <li>Supports multiple columns (flex-wrapped)</li>
+                <li>Supports a footer banner (using aside)</li>
+              </ul>
+            </li>
+            <li>Redesigned sections and header groups</li>
+            <li>Added aside alert variant for different use cases</li>
+            <li>Updated look of anchor tags (links)</li>
+            <li>Switched font from Roboto to Inter for better readability</li>
+            <li>Better contrast ratios for text/backgrounds</li>
+            <li>Updated spacing between sections and paragraphs</li>
+            <li>Removed hgroup lines</li>
+            <li>Fixed broken html</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div>
+        <div>
+          <strong> Menu </strong>
+          <menu>
+            <li><a href="./newVanilla.html">Home</a></li>
+            <li><a href="./vanillaDocumentation.html">Documentation</a></li>
+            <li><a href="./vanillaChangeLog.html">Change Log</a></li>
+          </menu>
+        </div>
+        <div>
+          <strong> About </strong>
+          <p>
+            VanillaHTML is a CSS file that is intended to help people learn
+            Semantic and Accessible HTML.
+          </p>
+        </div>
+      </div>
+      <aside>
+        <p>
+          Created by
+          <a href="https://bijanfandey.com" target="_blank">Bijan Fandey</a> |
+          <a href="https://fandeytech.com" target="_blank">Fandey Tech</a>
+        </p>
+      </aside>
+    </footer>
+  </body>
+</html>
