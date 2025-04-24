@@ -1,3 +1,7 @@
+/*  
+  Andy Bell is the author of this reset CSS File - https://piccalil.li/blog/a-more-modern-css-reset/
+*/
+
 /* Box sizing rules */
 *,
 *::before,
@@ -13,13 +17,8 @@ html {
 }
 
 /*  
-        'Body' adjusted by Bijan Fandey. This was included with the other selectors below, 
-        however removing margin from the whole body is my preferred method.
-
-        Please read: https://piccalil.li/blog/a-more-modern-css-reset/
-
-        Andy Bell is the author of the original CSS File.
-    */
+  'Body' adjusted by Bijan Fandey.
+*/  
 body {
   margin: 0;
   min-height: 100vh;
