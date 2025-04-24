@@ -7,7 +7,6 @@ This is intended to be an educational resource to help people build more accessi
 
 You can also use this to prototype your projects super quickly. You don't need to write a single line of CSS or add any Classnames, just write Semantic HTML and VanillaHTML will do the rest.
 
-## Note About Safari
-This file uses a few properties that are not available in Safari and will not work properlly in Safari. Please use Chrome or Firefox for best results.
-
-You can also remove the CSS Layer from the file and it will mostly work in Safari, but there are still some style issues.
+## Important Notes
+1. There are 3 CSS files included. A css reset, VanillaHTML css, and a global css file for custom styles.
+2. VanillaHTML is contained in a css layer so overwriting styles is incredibly easy.
