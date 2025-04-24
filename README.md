@@ -10,3 +10,11 @@ You can also use this to prototype your projects super quickly. You don't need t
 ## Important Notes
 1. There are 3 CSS files included. A css reset, VanillaHTML css, and a global css file for custom styles.
 2. VanillaHTML is contained in a css layer so overwriting styles is incredibly easy.
+
+
+## Browser Support
+VanillaHTML has been tested and works in the most recent versions
+1. Safari
+2. Firefox
+3. Chrome
+4. Edge
