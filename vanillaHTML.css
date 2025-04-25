@@ -119,27 +119,6 @@
     position: relative;
   }
 
-  a:not([class]):after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 0;
-    background: white;
-    mix-blend-mode: difference;
-    transition: height 0.15s;
-  }
-
-  a:not([class]):focus:after,
-  a:not([class]):hover:after {
-    height: 100%;
-  }
-
-  a:not([class]):active:after {
-    background: var(--surface-dark);
-  }
-
   main {
     max-width: 1200px;
     margin: auto;
