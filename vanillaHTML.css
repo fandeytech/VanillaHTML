@@ -103,7 +103,7 @@
     align-items: center;
     justify-content: space-between;
   }
-  body > header > nav > menu {
+  body > header > nav > ul:has(a) {
     list-style-type: none;
     display: flex;
     flex-wrap: wrap;
