@@ -1,3 +1,23 @@
+/* Code block styles for documentation examples */
+pre {
+  background: var(--shade-25);
+  color: var(--shade-225);
+  padding: 1rem;
+  overflow-x: auto;
+  border: 1px solid var(--surface-medium);
+  line-height: 1.5;
+}
+
+pre code {
+  background: none;
+  border: none;
+  color: inherit;
+  padding: 0;
+  font-size: 0.9rem;
+  white-space: pre;
+}
+
+/* Shade/Color demo grid */
 .shade-section .shade-wrapper {
   --columns: 6;
   display: grid;

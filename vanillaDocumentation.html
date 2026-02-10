@@ -3,28 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Documentation for VanillaHTML — a CSS file that teaches semantic and accessible HTML through pre-styled elements."
+    />
     <link rel="stylesheet" href="./vanillaHTML.css" />
     <link rel="stylesheet" href="./reset.css" />
     <link rel="stylesheet" href="./global.css" />
-    <title>VanillaHTML (A CSS File)</title>
+    <title>VanillaHTML Documentation</title>
   </head>
   <body>
     <header>
       <nav>
         <div>
-          <span
-            style="
-              color: white;
-              padding: 0.25rem 1rem;
-              background: rebeccapurple;
-              display: inline-block;
-              font-size: 2.25rem;
-              font-weight: bold;
-              max-width: 100%;
-            "
-          >
-            VanillaHTML
-          </span>
+          <span>VanillaHTML</span>
         </div>
         <ul>
           <li><a href="./index.html">Home</a></li>
@@ -36,23 +28,44 @@
     </header>
 
     <main>
+      <!-- 1. Getting Started -->
       <section>
         <header>
           <hgroup>
             <h1>Documentation</h1>
             <p>
-              This guide will teach you how to use VanillaHTML to learn and
-              rapidly prototype your ideas.
+              Learn how to use VanillaHTML to build semantic, accessible websites
             </p>
           </hgroup>
         </header>
 
         <div>
-          Using VanillaHTML allows you to structure and future proof your
-          website for all devices and browsers without worrying about the design
-          system behind it. You can focus on making your website functional
-          first.
+          <h2>Getting Started</h2>
+          <p>
+            VanillaHTML is made up of three <abbr title="Cascading Style Sheets">CSS</abbr> files that work together:
+          </p>
+          <dl>
+            <dt>reset.css</dt>
+            <dd>
+              A modern CSS reset (by Andy Bell) that removes browser default
+              styles so every element starts from a consistent baseline.
+            </dd>
+            <dt>vanillaHTML.css</dt>
+            <dd>
+              The core stylesheet. It contains CSS variables for theming, dark
+              mode support, and all the element styles wrapped in a
+              <code>@layer vanillaHTML</code> block.
+            </dd>
+            <dt>global.css</dt>
+            <dd>
+              Your own stylesheet for overrides and custom classes. Because
+              VanillaHTML uses a CSS layer, any styles you write in global.css
+              will automatically take priority — no <code>!important</code>
+              needed.
+            </dd>
+          </dl>
         </div>
+
         <div>
           <h2>Installation</h2>
           <p>
@@ -60,51 +73,285 @@
             <a
               href="https://github.com/fandeytech/VanillaHTML/blob/main/vanillaHTML.css"
               target="_blank"
+              >the CSS files</a
             >
-              the CSS file</a
-            >
-            from Github.
+            from Github and link them in your <abbr title="HyperText Markup Language">HTML</abbr>:
           </p>
-          <h2>Review HTML Elements</h2>
+          <pre><code>&lt;link rel="stylesheet" href="./vanillaHTML.css" /&gt;
+&lt;link rel="stylesheet" href="./reset.css" /&gt;
+&lt;link rel="stylesheet" href="./global.css" /&gt;</code></pre>
+        </div>
+
+        <div>
+          <h2>How CSS Layers Work</h2>
           <p>
-            If you aren't already familiar with the
-            <a
-              href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element"
-              target="blank"
-              >list of HTML elements</a
-            >
-            please review these elements before diving into using VanillaHTML.
-            We will walk through everything that is included in VanillaHTML, but
-            it will be easier if you have the HTML elements reference open so
-            you can get extra information as needed.
+            VanillaHTML wraps its styles in
+            <code>@layer vanillaHTML { ... }</code>. CSS layers have lower
+            priority than un-layered styles, so anything you write in global.css
+            will override VanillaHTML without specificity battles. This means you
+            can start with VanillaHTML's defaults and progressively customize as
+            you learn more CSS.
           </p>
         </div>
       </section>
+
+      <!-- 2. Page Structure -->
       <section>
         <header>
           <hgroup>
-            <h2>Asides</h2>
-            <p>Create definitions without defining styles</p>
+            <h2>Page Structure</h2>
+            <p>Landmark elements that define your page layout</p>
           </hgroup>
         </header>
-        <aside role="alert">
-          This documentation is incomplete and will be getting updated
-          incrementally.
-        </aside>
-        <aside>
-          This documentation is incomplete and will be getting updated
-          incrementally.
-        </aside>
+
+        <div>
+          <p>
+            Every <abbr title="HyperText Markup Language">HTML</abbr> page should use semantic landmark elements to
+            define its structure. These elements help screen readers and search
+            engines understand your content. VanillaHTML styles all of them
+            automatically.
+          </p>
+          <dl>
+            <dt>&lt;header&gt;</dt>
+            <dd>
+              The top of the page. Contains navigation and branding. Maps to the
+              <code>banner</code> landmark role.
+            </dd>
+            <dt>&lt;nav&gt;</dt>
+            <dd>
+              Site navigation links. Maps to the <code>navigation</code>
+              landmark role.
+            </dd>
+            <dt>&lt;main&gt;</dt>
+            <dd>
+              The primary content of the page. There should only be one per
+              page. Maps to the <code>main</code> landmark role.
+            </dd>
+            <dt>&lt;section&gt;</dt>
+            <dd>
+              A thematic grouping of content with a heading. VanillaHTML gives
+              sections a border and card-like layout.
+            </dd>
+            <dt>&lt;footer&gt;</dt>
+            <dd>
+              The bottom of the page. Contains secondary navigation, about info,
+              and credits. Maps to the <code>contentinfo</code> landmark role.
+            </dd>
+          </dl>
+        </div>
+
+        <div>
+          <h3>Example Structure</h3>
+          <pre><code>&lt;body&gt;
+  &lt;header&gt;
+    &lt;nav&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="./index.html"&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="./about.html"&gt;About&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+  &lt;main&gt;
+    &lt;section&gt;
+      &lt;header&gt;
+        &lt;hgroup&gt;
+          &lt;h1&gt;Page Title&lt;/h1&gt;
+          &lt;p&gt;Subtitle&lt;/p&gt;
+        &lt;/hgroup&gt;
+      &lt;/header&gt;
+      &lt;div&gt;Content goes here&lt;/div&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+  &lt;footer&gt;...&lt;/footer&gt;
+&lt;/body&gt;</code></pre>
+        </div>
       </section>
+
+      <!-- 3. Headings & Text -->
       <section>
         <header>
           <hgroup>
-            <h2>HTML Tables</h2>
+            <h2>Headings &amp; Text</h2>
+            <p>Typography elements for structuring content</p>
+          </hgroup>
+        </header>
+
+        <div>
+          <p>
+            Headings create a document outline that assistive technology uses to
+            navigate your page. Always use headings in order — don't skip from
+            <code>&lt;h1&gt;</code> to <code>&lt;h3&gt;</code>.
+          </p>
+
+          <h3>Headings</h3>
+          <hgroup>
+            <h1>Heading 1</h1>
+            <p>Use once per page as the main title</p>
+          </hgroup>
+          <hgroup>
+            <h2>Heading 2</h2>
+            <p>Major sections within the page</p>
+          </hgroup>
+          <hgroup>
+            <h3>Heading 3</h3>
+            <p>Sub-sections within an h2</p>
+          </hgroup>
+          <hgroup>
+            <h4>Heading 4</h4>
+            <p>Sub-sections within an h3</p>
+          </hgroup>
+
+          <pre><code>&lt;hgroup&gt;
+  &lt;h1&gt;Heading 1&lt;/h1&gt;
+  &lt;p&gt;Use once per page as the main title&lt;/p&gt;
+&lt;/hgroup&gt;
+
+&lt;hgroup&gt;
+  &lt;h2&gt;Heading 2&lt;/h2&gt;
+  &lt;p&gt;Major sections within the page&lt;/p&gt;
+&lt;/hgroup&gt;</code></pre>
+        </div>
+
+        <div>
+          <h3>Inline Text Elements</h3>
+          <p>
+            <strong>&lt;strong&gt;</strong> — indicates important text.<br />
+            <em>&lt;em&gt;</em> — indicates emphasized text.<br />
+            <b>&lt;b&gt;</b> — bold text without added importance.<br />
+            <small>&lt;small&gt;</small> — side comments, fine print.<br />
+            <mark>&lt;mark&gt;</mark> — highlighted/marked text.<br />
+            <abbr title="Abbreviation">abbr</abbr> — abbreviations (hover to see the title).<br />
+            H<sub>2</sub>O — <code>&lt;sub&gt;</code> for subscript.<br />
+            x<sup>2</sup> — <code>&lt;sup&gt;</code> for superscript.
+          </p>
+          <pre><code>&lt;strong&gt;Important text&lt;/strong&gt;
+&lt;em&gt;Emphasized text&lt;/em&gt;
+&lt;b&gt;Bold text&lt;/b&gt;
+&lt;small&gt;Fine print&lt;/small&gt;
+&lt;mark&gt;Highlighted text&lt;/mark&gt;
+&lt;abbr title="Abbreviation"&gt;abbr&lt;/abbr&gt;
+H&lt;sub&gt;2&lt;/sub&gt;O
+x&lt;sup&gt;2&lt;/sup&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- 4. Links -->
+      <section>
+        <header>
+          <hgroup>
+            <h2>Links</h2>
+            <p>Anchor elements for navigation and references</p>
+          </hgroup>
+        </header>
+
+        <div>
+          <p>
+            The <code>&lt;a&gt;</code> element creates hyperlinks. VanillaHTML
+            styles links with an underline and removes default borders.
+          </p>
+          <p>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a" target="_blank" rel="noopener">
+              This is an external link (opens in a new tab)
+            </a>
+          </p>
+          <p>
+            When linking to external sites, use <code>target="_blank"</code>
+            with <code>rel="noopener"</code> to prevent the new page from
+            accessing your page's <code>window.opener</code> object.
+          </p>
+          <pre><code>&lt;!-- Internal link --&gt;
+&lt;a href="./about.html"&gt;About Page&lt;/a&gt;
+
+&lt;!-- External link --&gt;
+&lt;a href="https://example.com" target="_blank" rel="noopener"&gt;
+  External Site
+&lt;/a&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- 5. Lists -->
+      <section>
+        <header>
+          <hgroup>
+            <h2>Lists</h2>
+            <p>Ordered, unordered, menus, and description lists</p>
+          </hgroup>
+        </header>
+
+        <div>
+          <h3>Unordered List</h3>
+          <p>Use <code>&lt;ul&gt;</code> when the order of items doesn't matter.</p>
+          <ul>
+            <li>First item</li>
+            <li>Second item</li>
+            <li>Third item</li>
+          </ul>
+          <pre><code>&lt;ul&gt;
+  &lt;li&gt;First item&lt;/li&gt;
+  &lt;li&gt;Second item&lt;/li&gt;
+  &lt;li&gt;Third item&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+          <h3>Ordered List</h3>
+          <p>Use <code>&lt;ol&gt;</code> when the sequence matters.</p>
+          <ol>
+            <li>Step one</li>
+            <li>Step two</li>
+            <li>Step three</li>
+          </ol>
+          <pre><code>&lt;ol&gt;
+  &lt;li&gt;Step one&lt;/li&gt;
+  &lt;li&gt;Step two&lt;/li&gt;
+  &lt;li&gt;Step three&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+
+          <h3>Menu</h3>
+          <p>
+            The <code>&lt;menu&gt;</code> element is a semantic alternative to
+            <code>&lt;ul&gt;</code> for toolbars and navigation groups. VanillaHTML
+            uses it in the footer.
+          </p>
+          <pre><code>&lt;menu&gt;
+  &lt;li&gt;&lt;a href="./index.html"&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="./about.html"&gt;About&lt;/a&gt;&lt;/li&gt;
+&lt;/menu&gt;</code></pre>
+
+          <h3>Description List</h3>
+          <p>
+            Use <code>&lt;dl&gt;</code> for term-definition pairs. VanillaHTML
+            adds a bottom border to terms and a triangle marker to definitions.
+          </p>
+          <dl>
+            <dt>Semantic HTML</dt>
+            <dd>Using HTML elements according to their intended meaning.</dd>
+            <dt>Accessibility</dt>
+            <dd>Designing websites that everyone can use, including people with disabilities.</dd>
+          </dl>
+          <pre><code>&lt;dl&gt;
+  &lt;dt&gt;Semantic HTML&lt;/dt&gt;
+  &lt;dd&gt;Using HTML elements according to their intended meaning.&lt;/dd&gt;
+  &lt;dt&gt;Accessibility&lt;/dt&gt;
+  &lt;dd&gt;Designing websites that everyone can use.&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- 6. Tables -->
+      <section>
+        <header>
+          <hgroup>
+            <h2>Tables</h2>
             <p>A simple structure to easily see your table data</p>
           </hgroup>
         </header>
 
         <div>
+          <p>
+            Tables should only be used for tabular data — never for layout.
+            VanillaHTML styles tables with alternating row colors, borders, and
+            responsive overflow handling.
+          </p>
+
           <table>
             <caption>
               Example Table
@@ -130,7 +377,7 @@
                 <td>
                   <ul>
                     <li>Opinionated styles</li>
-                    <li>Delay Learning <abbr>CSS</abbr></li>
+                    <li>Delay Learning <abbr title="Cascading Style Sheets">CSS</abbr></li>
                   </ul>
                 </td>
               </tr>
@@ -139,18 +386,14 @@
                   <span>Here's another row just to look at!</span>
                 </td>
                 <td>
-                  <span
-                    >The <abbr>CSS</abbr> contains some properties that do not
-                    have baseline support yet.</span
-                  >
+                  <span>The <abbr title="Cascading Style Sheets">CSS</abbr> contains some properties that do not
+                    have baseline support yet.</span>
                 </td>
               </tr>
               <tr>
-                <td colspan="2">
-                  <center>
-                    <strong>Progressive Enhancement:</strong>
-                    Use an updated version of Chrome for the best experience.
-                  </center>
+                <td colspan="2" style="text-align: center;">
+                  <strong>Progressive Enhancement:</strong>
+                  Use an updated version of Chrome for the best experience.
                 </td>
               </tr>
             </tbody>
@@ -162,29 +405,59 @@
               </tr>
             </tfoot>
           </table>
+
+          <pre><code>&lt;table&gt;
+  &lt;caption&gt;Example Table&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope="col"&gt;PROS&lt;/th&gt;
+      &lt;th scope="col"&gt;CONS&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;...&lt;/td&gt;
+      &lt;td&gt;...&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;
+    &lt;tr&gt;
+      &lt;td colspan="2"&gt;Footer content&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;</code></pre>
+          <p>
+            Use <code>scope="col"</code> on <code>&lt;th&gt;</code> elements to
+            indicate they are column headers. This helps screen readers
+            associate data cells with their headers.
+          </p>
         </div>
       </section>
 
+      <!-- 7. Forms -->
       <section>
         <header>
           <hgroup>
             <h2>Forms</h2>
-            <p>CSS only validation, basic styling, cursor updates.</p>
+            <p>CSS-only validation, basic styling, cursor updates</p>
           </hgroup>
         </header>
-        <p>
-          Please read
-          <a href="https://developer.mozilla.org/en-US/docs/Glossary/Semantics"
-            >MDN Documentation on Semantics in HTML</a
-          >
-        </p>
-        <h3>This is an Example Form</h3>
+
+        <div>
+          <p>
+            VanillaHTML styles form elements with sensible defaults: text inputs
+            get proper padding and borders, buttons get hover and active states,
+            and validation uses CSS-only color feedback (green for valid, orange
+            for invalid, red for focused required fields).
+          </p>
+        </div>
+
         <aside>
           <strong>Note:</strong>
-          I've updated the <code>cursor</code> on various inputs to give better
-          feedback to users. I will be coming back to add more Form Elements and
-          inputs over time.
+          The <code>cursor</code> has been updated on various inputs to give
+          better feedback to users.
         </aside>
+
         <form onsubmit="return false;">
           <div>
             <label for="movie">Favorite Show?</label>
@@ -204,6 +477,7 @@
             <input type="radio" id="mothman" name="monster" value="M" />
             <label for="mothman">Mothman</label>
           </fieldset>
+
           <div>
             <label for="rate">Don't forget a rating!</label>
             <input
@@ -215,6 +489,7 @@
               value="50"
             />
           </div>
+
           <fieldset>
             <legend>Do you agree?</legend>
             <input type="checkbox" id="chbx-agree" name="agree" value="Yes!" />
@@ -240,7 +515,7 @@
           <input type="color" />
 
           <fieldset>
-            <legend>CSS Only Form Validation</legend>
+            <legend>CSS-Only Form Validation</legend>
             <div>
               <label for="email">Email<sup>*</sup></label>
               <br />
@@ -265,199 +540,407 @@
             </div>
           </fieldset>
 
-          <span
-            >Press <strong>Submit</strong> to see an example
-            <code><span><</span>button<span>></span></code> press.</span
-          >
+          <span>Press <strong>Submit</strong> to see an example
+            <code>&lt;button&gt;</code> press.</span>
           <button type="submit">Submit</button>
         </form>
+
+        <div>
+          <h3>Form Source Code</h3>
+          <pre><code>&lt;form onsubmit="return false;"&gt;
+  &lt;div&gt;
+    &lt;label for="movie"&gt;Favorite Show?&lt;/label&gt;
+    &lt;br /&gt;
+    &lt;input type="text" name="movie" placeholder="Bobs Burgers" /&gt;
+  &lt;/div&gt;
+
+  &lt;fieldset&gt;
+    &lt;legend&gt;Choose your favorite monster&lt;/legend&gt;
+    &lt;input type="radio" id="kraken" name="monster" value="K" /&gt;
+    &lt;label for="kraken"&gt;Kraken&lt;/label&gt;
+  &lt;/fieldset&gt;
+
+  &lt;div&gt;
+    &lt;label for="rate"&gt;Rating&lt;/label&gt;
+    &lt;input type="range" name="rate" min="0" max="100" /&gt;
+  &lt;/div&gt;
+
+  &lt;fieldset&gt;
+    &lt;legend&gt;Do you agree?&lt;/legend&gt;
+    &lt;input type="checkbox" id="agree" name="agree" /&gt;
+    &lt;label for="agree"&gt;Agree&lt;/label&gt;
+  &lt;/fieldset&gt;
+
+  &lt;label for="childhood"&gt;Tell me:&lt;/label&gt;
+  &lt;textarea name="childhood"&gt;&lt;/textarea&gt;
+
+  &lt;label for="color"&gt;Favorite Color&lt;/label&gt;
+  &lt;input type="color" /&gt;
+
+  &lt;fieldset&gt;
+    &lt;legend&gt;CSS-Only Validation&lt;/legend&gt;
+    &lt;label for="email"&gt;Email&lt;sup&gt;*&lt;/sup&gt;&lt;/label&gt;
+    &lt;input required type="email" name="email" /&gt;
+    &lt;label for="password"&gt;Password&lt;sup&gt;*&lt;/sup&gt;&lt;/label&gt;
+    &lt;input required minlength="12" type="password" name="password" /&gt;
+  &lt;/fieldset&gt;
+
+  &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        </div>
       </section>
+
+      <!-- 8. Blockquotes & Citations -->
       <section>
         <header>
           <hgroup>
-            <h2>Blockquote</h2>
-            <p></p>
+            <h2>Blockquotes &amp; Citations</h2>
+            <p>Quoting text with proper attribution</p>
           </hgroup>
         </header>
+
+        <div>
+          <p>
+            Use <code>&lt;blockquote&gt;</code> for extended quotations.
+            VanillaHTML wraps blockquotes in a dark container with automatic
+            curly quotes. Use <code>&lt;cite&gt;</code> for the source.
+          </p>
+        </div>
+
         <div>
           <blockquote cite="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
             <p>Never gonna make you cry, Never gonna say goodbye,</p>
           </blockquote>
           <p>
             - Rick Astley,
-            <cite
-              ><a
+            <cite>
+              <a
                 target="_blank"
+                rel="noopener"
                 href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
                 >Never Gonna Give You Up</a
-              ></cite
-            >
+              >
+            </cite>
           </p>
+        </div>
+
+        <div>
+          <pre><code>&lt;div&gt;
+  &lt;blockquote cite="https://example.com"&gt;
+    &lt;p&gt;The quoted text goes here.&lt;/p&gt;
+  &lt;/blockquote&gt;
+  &lt;p&gt;
+    - Author Name,
+    &lt;cite&gt;&lt;a href="https://example.com"&gt;Source Title&lt;/a&gt;&lt;/cite&gt;
+  &lt;/p&gt;
+&lt;/div&gt;</code></pre>
         </div>
       </section>
 
+      <!-- 9. Details & Summary -->
       <section>
         <header>
           <hgroup>
-            <h2>Description Details</h2>
-            <p>Create definitions without defining styles</p>
+            <h2>Details &amp; Summary</h2>
+            <p>Collapsible content without JavaScript</p>
           </hgroup>
         </header>
+
         <div>
-          <dl>
-            <dt>Hello World</dt>
-            <dd>&nbsp; Goodnight Moon</dd>
-          </dl>
-        </div>
-      </section>
-      <section>
-        <header>
-          <hgroup>
-            <h2>Detail Summary</h2>
-            <p>Create definitions without defining styles</p>
-          </hgroup>
-        </header>
-        <div>
+          <p>
+            The <code>&lt;details&gt;</code> element creates a disclosure widget
+            that the user can open and close. The
+            <code>&lt;summary&gt;</code> element provides the visible heading.
+            This is one of the best examples of <abbr title="HyperText Markup Language">HTML</abbr> doing the work
+            that many developers reach for JavaScript to accomplish.
+          </p>
+
           <details>
             <summary>HTML and CSS Only...</summary>
             <div>No JavaScript required.</div>
           </details>
         </div>
+
+        <div>
+          <pre><code>&lt;details&gt;
+  &lt;summary&gt;Click to expand&lt;/summary&gt;
+  &lt;div&gt;Hidden content revealed on click.&lt;/div&gt;
+&lt;/details&gt;</code></pre>
+        </div>
       </section>
-      <section class="shade-section">
+
+      <!-- 10. Asides -->
+      <section>
         <header>
           <hgroup>
-            <h2>Shades and Colors</h2>
-            <p>Simple <abbr>CSS</abbr> variable schema</p>
+            <h2>Asides</h2>
+            <p>Callouts, notes, and alerts</p>
           </hgroup>
         </header>
 
-        <h3>Shades</h3>
-        <div class="shade-wrapper">
-          <figure>
-            <div class="color-box shade-0"></div>
-            <figcaptoion
-              >--shade-0 <br />
-              rgb(0, 0, 0)</figcaptoion
-            >
-          </figure>
-          <figure>
-            <div class="color-box shade-5"></div>
-            <figcaptoion
-              >--shade-5<br />
-              rgb(5, 5, 5)</figcaptoion
-            >
-          </figure>
-          <figure>
-            <div class="color-box shade-25"></div>
-            <figcaptoion
-              >--shade-25<br />
-              rgb(25, 25, 25)</figcaptoion
-            >
-          </figure>
-          <figure>
-            <div class="color-box shade-50"></div>
-            <figcaptoion
-              >--shade-50 <br />
-              rgb(50, 50, 50)</figcaptoion
-            >
-          </figure>
-          <figure>
-            <div class="color-box shade-75"></div>
-            <figcaptoion
-              >--shade-75 <br />
-              rgb(75, 75, 75)</figcaptoion
-            >
-          </figure>
-          <figure>
-            <div class="color-box shade-100"></div>
-            <figcaptoion
-              >--shade-100<br />
-              rgb(100, 100, 100)</figcaptoion
-            >
-          </figure>
-          <figure>
-            <div class="color-box shade-125"></div>
-            <figcaptoion
-              >--shade-125 <br />
-              rgb(125, 125, 125)</figcaptoion
-            >
-          </figure>
-
-          <figure>
-            <div class="color-box shade-150"></div>
-            <figcaptoion
-              >--shade-150<br />
-              rgb(150, 150, 150)</figcaptoion
-            >
-          </figure>
-          <figure>
-            <div class="color-box shade-175"></div>
-            <figcaptoion
-              >--shade-175 <br />
-              rgb(175, 175, 175)</figcaptoion
-            >
-          </figure>
-          <figure>
-            <div class="color-box shade-200"></div>
-            <figcaptoion
-              >--shade-200 <br />
-              rgb(200, 200, 200)</figcaptoion
-            >
-          </figure>
-          <figure>
-            <div class="color-box shade-225"></div>
-            <figcaptoion
-              >--shade-225<br />
-              rgb(225, 225, 225)</figcaptoion
-            >
-          </figure>
-          <figure>
-            <div class="color-box shade-250"></div>
-            <figcaptoion
-              >--shade-250 <br />
-              rgb(250, 250, 250)</figcaptoion
-            >
-          </figure>
-          <figure>
-            <div class="color-box shade-255"></div>
-            <figcaptoion
-              >--shade-255 <br />
-              rgb(255, 255, 255)</figcaptoion
-            >
-          </figure>
+        <div>
+          <p>
+            The <code>&lt;aside&gt;</code> element represents content that is
+            tangentially related to the main content. VanillaHTML styles asides
+            as callout boxes with a left border. Add
+            <code>role="alert"</code> for a red danger-style variant.
+          </p>
         </div>
 
-        <h3>Colors</h3>
-        <div class="shade-wrapper">
-          <figure>
-            <div class="color-box color-danger"></div>
-            <figcaptoion
-              >--color-danger <br />
-              rgb(255, 0, 0)</figcaptoion
-            >
-          </figure>
-          <figure>
-            <div class="color-box color-caution"></div>
-            <figcaptoion
-              >--color-caution<br />
-              rgb(255, 165, 0)</figcaptoion
-            >
-          </figure>
-          <figure>
-            <div class="color-box color-success"></div>
-            <figcaptoion
-              >--color-success <br />
-              rgb(0, 128, 0)</figcaptoion
-            >
-          </figure>
+        <aside>
+          This is a default aside — useful for notes, tips, or supplementary
+          information.
+        </aside>
+
+        <aside role="alert">
+          This is an alert aside — use it for warnings or critical information
+          that needs attention.
+        </aside>
+
+        <div>
+          <pre><code>&lt;!-- Default aside --&gt;
+&lt;aside&gt;
+  A helpful note or tip.
+&lt;/aside&gt;
+
+&lt;!-- Alert variant --&gt;
+&lt;aside role="alert"&gt;
+  Warning: something needs attention!
+&lt;/aside&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- 11. Code -->
+      <section>
+        <header>
+          <hgroup>
+            <h2>Code</h2>
+            <p>Displaying code inline and in blocks</p>
+          </hgroup>
+        </header>
+
+        <div>
+          <p>
+            Use <code>&lt;code&gt;</code> for inline code snippets. VanillaHTML
+            gives them a contrasting background and border. For multi-line code
+            blocks, wrap <code>&lt;code&gt;</code> inside
+            <code>&lt;pre&gt;</code> (preformatted text).
+          </p>
+
+          <p>
+            Inline example: the <code>console.log()</code> function prints
+            output to the browser console.
+          </p>
+
+          <pre><code>&lt;!-- Inline code --&gt;
+&lt;p&gt;Use the &lt;code&gt;console.log()&lt;/code&gt; function.&lt;/p&gt;
+
+&lt;!-- Code block --&gt;
+&lt;pre&gt;&lt;code&gt;function greet(name) {
+  return "Hello, " + name;
+}&lt;/code&gt;&lt;/pre&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- 12. Images & Figures -->
+      <section>
+        <header>
+          <hgroup>
+            <h2>Images &amp; Figures</h2>
+            <p>Displaying images with captions and proper alt text</p>
+          </hgroup>
+        </header>
+
+        <div>
+          <p>
+            Use <code>&lt;img&gt;</code> to embed images. Every image
+            <strong>must</strong> have an <code>alt</code> attribute that
+            describes the image for screen readers and when images fail to load.
+            Wrap images in <code>&lt;figure&gt;</code> with a
+            <code>&lt;figcaption&gt;</code> when they need a visible caption.
+          </p>
+
+          <pre><code>&lt;!-- Simple image --&gt;
+&lt;img src="photo.jpg" alt="A description of the photo" /&gt;
+
+&lt;!-- Image with caption --&gt;
+&lt;figure&gt;
+  &lt;img src="chart.png" alt="Bar chart showing monthly sales" /&gt;
+  &lt;figcaption&gt;Monthly sales data for 2025&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+          <p>
+            <strong>Alt text tips:</strong> Be specific and concise. Describe
+            what the image shows, not what it is. For decorative images, use an
+            empty <code>alt=""</code> so screen readers skip them.
+          </p>
+        </div>
+      </section>
+
+      <!-- 13. Theming -->
+      <section class="shade-section">
+        <header>
+          <hgroup>
+            <h2>Theming</h2>
+            <p>CSS variables for customizing the look</p>
+          </hgroup>
+        </header>
+
+        <div>
+          <p>
+            VanillaHTML uses <abbr title="Cascading Style Sheets">CSS</abbr> custom properties (variables) for all
+            colors. You can override any variable in your own stylesheet to
+            create a custom theme. The main variables are defined in
+            <code>:root</code> inside vanillaHTML.css.
+          </p>
+
+          <pre><code>/* Override in your global.css */
+:root {
+  --background: #1a1a2e;
+  --text: #eee;
+  --surface-dark: #16213e;
+  --color-accent: coral;
+}</code></pre>
+        </div>
+
+        <div>
+          <h3>Shades</h3>
+          <p>
+            A grayscale palette from black to white, available as CSS variables.
+          </p>
+          <div class="shade-wrapper">
+            <figure>
+              <div class="color-box shade-0"></div>
+              <figcaption>--shade-0 <br />rgb(0, 0, 0)</figcaption>
+            </figure>
+            <figure>
+              <div class="color-box shade-5"></div>
+              <figcaption>--shade-5<br />rgb(5, 5, 5)</figcaption>
+            </figure>
+            <figure>
+              <div class="color-box shade-25"></div>
+              <figcaption>--shade-25<br />rgb(25, 25, 25)</figcaption>
+            </figure>
+            <figure>
+              <div class="color-box shade-50"></div>
+              <figcaption>--shade-50 <br />rgb(50, 50, 50)</figcaption>
+            </figure>
+            <figure>
+              <div class="color-box shade-75"></div>
+              <figcaption>--shade-75 <br />rgb(75, 75, 75)</figcaption>
+            </figure>
+            <figure>
+              <div class="color-box shade-100"></div>
+              <figcaption>--shade-100<br />rgb(100, 100, 100)</figcaption>
+            </figure>
+            <figure>
+              <div class="color-box shade-125"></div>
+              <figcaption>--shade-125 <br />rgb(125, 125, 125)</figcaption>
+            </figure>
+            <figure>
+              <div class="color-box shade-150"></div>
+              <figcaption>--shade-150<br />rgb(150, 150, 150)</figcaption>
+            </figure>
+            <figure>
+              <div class="color-box shade-175"></div>
+              <figcaption>--shade-175 <br />rgb(175, 175, 175)</figcaption>
+            </figure>
+            <figure>
+              <div class="color-box shade-200"></div>
+              <figcaption>--shade-200 <br />rgb(200, 200, 200)</figcaption>
+            </figure>
+            <figure>
+              <div class="color-box shade-225"></div>
+              <figcaption>--shade-225<br />rgb(225, 225, 225)</figcaption>
+            </figure>
+            <figure>
+              <div class="color-box shade-250"></div>
+              <figcaption>--shade-250 <br />rgb(250, 250, 250)</figcaption>
+            </figure>
+            <figure>
+              <div class="color-box shade-255"></div>
+              <figcaption>--shade-255 <br />rgb(255, 255, 255)</figcaption>
+            </figure>
+          </div>
+
+          <h3>Colors</h3>
+          <p>
+            Status colors used for validation, alerts, and accents.
+          </p>
+          <div class="shade-wrapper">
+            <figure>
+              <div class="color-box color-danger"></div>
+              <figcaption>--color-danger <br />rgb(255, 0, 0)</figcaption>
+            </figure>
+            <figure>
+              <div class="color-box color-caution"></div>
+              <figcaption>--color-caution<br />rgb(255, 165, 0)</figcaption>
+            </figure>
+            <figure>
+              <div class="color-box color-success"></div>
+              <figcaption>--color-success <br />rgb(0, 128, 0)</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- 14. Dark Mode -->
+      <section>
+        <header>
+          <hgroup>
+            <h2>Dark Mode</h2>
+            <p>Automatic theme switching based on system preference</p>
+          </hgroup>
+        </header>
+
+        <div>
+          <p>
+            VanillaHTML includes built-in dark mode support using the
+            <code>prefers-color-scheme</code> media query. When a user's
+            operating system is set to dark mode, the semantic color variables
+            are automatically swapped — backgrounds become dark, text becomes
+            light, and surfaces invert.
+          </p>
+
+          <pre><code>/* How it works in vanillaHTML.css */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #232323;
+    --text: var(--shade-255);
+    --surface-light: var(--shade-50);
+    --surface-dark: var(--shade-225);
+    --text-inverse: var(--shade-0);
+  }
+}</code></pre>
+
+          <p>
+            To customize dark mode, override the same variables inside the same
+            media query in your global.css:
+          </p>
+
+          <pre><code>/* In your global.css */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0d1117;
+    --surface-dark: #161b22;
+    --color-accent: #58a6ff;
+  }
+}</code></pre>
+
+          <p>
+            Because VanillaHTML uses semantic variable names like
+            <code>--text</code> and <code>--background</code> (instead of
+            literal color names), the entire design adapts automatically. You
+            only need to define your palette once for light mode and once for
+            dark mode.
+          </p>
         </div>
       </section>
     </main>
+
     <footer>
       <div>
         <div>
-          <strong> Menu </strong>
+          <strong>Menu</strong>
           <menu>
             <li><a href="./index.html">Home</a></li>
             <li><a href="./vanillaDocumentation.html">Documentation</a></li>
@@ -472,7 +955,7 @@
           </menu>
         </div>
         <div>
-          <strong> About </strong>
+          <strong>About</strong>
           <p>
             VanillaHTML is a CSS file that is intended to help people learn
             Semantic and Accessible HTML.
